@@ -15,8 +15,6 @@
 <h1>管理者画面</h1>
 </div>
 <ul>
-<li>「商品の追加と削除」未制作</li>
-<li>「商品在庫の管理」未制作</li>
 </ul>
 
 <s:include value="footer.jsp"/>

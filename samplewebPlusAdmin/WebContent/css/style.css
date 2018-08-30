@@ -4,6 +4,7 @@ body, html{
 	padding:0;	/*余白の削除*/
 	width:100%;
 	height:100%;
+	font-family:Verdana, Helvetica, sans-serif;
 }
 #header{
 /*	position:fixed;
@@ -50,22 +51,23 @@ body, html{
 	padding-left:42%;
 	float:left;
 }
-.submit_btn{
-	padding:0.5em 1em; /* 1em=1文字分の長さ*/
-	text-decoration:none;
-	border-radius:100px;
-	width:100px;
-	height:35px;
-	margin-top:-5px;
-	margin-left:6px;
-	font-size:10px;
-	text-align:center;
-	color:#fff;
-	box-shadow:2px 2px #1a6ea0;
-	background:#4b7ea1;
-	background:-webkit-gradient(linear,left top,left bottom,from(#81a8cb),to(#4477a1));
-	background:-moz-linear-gradient(-90deg,#81a8cb,#4477a1);
-	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb',endColorstr='#4477a1');
+.submit_btn {
+    padding: 0.5em 1em;
+    text-decoration:none;
+    border-radius:100px;
+    width:100px;
+	height : 35px;
+	margin-top : -5px;
+	margin-left : 6px;
+	margin-bottom : 50px;
+    font-size:10px;
+    text-align:center;
+    color:#fff;
+    box-shadow:2px 2px #1a6ea0;
+    background: #4b7ea1;
+    background: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#4477a1) );
+    background: -moz-linear-gradient(-90deg, #81a8cb, #4477a1);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
 }
 .submit_btn:hover{
 	color:#fff;

@@ -69,9 +69,11 @@
 		<s:hidden name="releaseDate" value="%{#session.releaseDate}"/>
 		<s:token/>
 
-					<div class="submi_btn_box">
-						<s:submit value="追加完了" class="submit_btn"/>
-					</div>
+		<div class="submit_btn_box">
+			<div id="contents-btn-set">
+				<s:submit value="追加完了" class="submit_btn"/>
+			</div>
+		</div>
 
 		</s:form>
 	</div>

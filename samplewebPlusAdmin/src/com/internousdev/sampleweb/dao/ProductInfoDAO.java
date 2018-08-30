@@ -184,6 +184,44 @@ public class ProductInfoDAO {
 		return productInfoDtoList;
 	}
 
+	public List<ProductInfoDTO> getProductInfoListAll(){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		List<ProductInfoDTO> productInfoDtoList = new ArrayList<ProductInfoDTO>();
+		String sql = "SELECT * FROM product_info";
+
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				ProductInfoDTO productInfoDto = new ProductInfoDTO();
+				productInfoDto.setId(resultSet.getInt("id"));
+				productInfoDto.setProductId(resultSet.getInt("product_id"));
+				productInfoDto.setProductName(resultSet.getString("product_name"));
+				productInfoDto.setProductNameKana(resultSet.getString("product_name_kana"));
+				productInfoDto.setProductDescription(resultSet.getString("product_description"));
+				productInfoDto.setCategoryId(resultSet.getInt("category_id"));
+				productInfoDto.setPrice(resultSet.getInt("price"));
+				productInfoDto.setImageFilePath(resultSet.getString("image_file_path"));
+				productInfoDto.setImageFileName(resultSet.getString("image_file_name"));
+				productInfoDto.setReleaseDate(resultSet.getDate("release_date"));
+				productInfoDto.setReleaseCompany(resultSet.getString("release_company"));
+				productInfoDto.setStatus(resultSet.getInt("status"));
+				productInfoDto.setUpdateDate(resultSet.getDate("regist_date"));
+				productInfoDto.setUpdateDate(resultSet.getDate("update_date"));
+				productInfoDtoList.add(productInfoDto);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		try{
+			connection.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return productInfoDtoList;
+	}
+
 	//keywordとcategoryIdから商品情報を検索
 	public List<ProductInfoDTO> getProductInfoListByKeywords(String[] keywordsList, String categoryId) {
 		DBConnector dbConnector = new DBConnector();
@@ -278,5 +316,37 @@ public class ProductInfoDAO {
 			e.printStackTrace();
 		}
 		return count+1;
+	}
+
+	//商品の追加（管理者機能）
+	public int createProduct(int productId,String productName, String productNameKana, String productDescription,int categoryId, int price, String imageFilePath, String imageFileName,String releaseDate, String releaseCompany){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+		int count = 0;
+		String sql = "INSERT INTO product_info(product_id,product_name,product_name_kana,product_description,category_id,price,image_file_path,image_file_name,release_date,release_company,regist_date,update_date) VALUES (?,?,?,?,?,?,?,?,?,?,now(),now())";
+
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, productId);
+			preparedStatement.setString(2, productName);
+			preparedStatement.setString(3, productNameKana);
+			preparedStatement.setString(4, productDescription);
+			preparedStatement.setInt(5, categoryId);
+			preparedStatement.setInt(6, price);
+			preparedStatement.setString(7, imageFilePath);
+			preparedStatement.setString(8, imageFileName);
+			preparedStatement.setString(9, releaseDate);
+			preparedStatement.setString(10, releaseCompany);
+
+			count = preparedStatement.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		try{
+			connection.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return count;
 	}
 }

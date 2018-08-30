@@ -13,6 +13,13 @@
 <jsp:include page="masterHeader.jsp"/>
 <div id="contents">
 	<h1>商品の追加と削除</h1>
+		<s:if test="addProduct==1">
+		<div class="error">
+		<div class="error-message">
+			<s:property value="addProduct"/>件追加しました。
+		</div>
+		</div>
+		</s:if>
 	<s:if test="#session.productInfoDtoList==null">
 	<div class="info">
 	商品は0件です。

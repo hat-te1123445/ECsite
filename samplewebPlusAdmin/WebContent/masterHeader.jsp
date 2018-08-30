@@ -29,9 +29,8 @@
 		<div id="header-menu">
 			<ul>
 			<s:form id="form" name="form">
-				<li><s:submit value="商品の追加と削除" class="submit_btm" onclick="goManagementProductAction()"/></li>
-				<li><s:submit value="商品在庫の管理" class="submit_btm" onclick="goProductStockAction()"/></li>
-				<li><s:submit value="ログアウト" class="submit_btm" onclick="goLogoutAction()"/></li>
+				<li><s:submit value="商品の追加と削除" class="submit_btn" onclick="goManagementProductAction()"/></li>
+				<li><s:submit value="ログアウト" class="submit_btn" onclick="goLogoutAction()"/></li>
 			</s:form>
 			</ul>
 		</div>
